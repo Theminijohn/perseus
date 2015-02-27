@@ -30,7 +30,7 @@ module Perseus
     attr_writer :id, :name, :profile_icon_id, :summoner_level, :revision_date_str
 
     def revision_date= value
-      @revision_date = valie.is_a?(Numeric) && Time.at(value / 1000) || value
+      @revision_date = value.is_a?(Numeric) && Time.at(value / 1000) || value
     end
 
   end

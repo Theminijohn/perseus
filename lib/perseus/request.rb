@@ -20,7 +20,7 @@ module Perseus
     # Stub method. Each subclass should have its own api version
     # @return [String] api version
     def self.api_version
-      "v1.1"
+      "v1.4"
     end
 
     # Returns a full url for an API call
@@ -52,9 +52,9 @@ module Perseus
     # @return [String] raw response of the call
     def perform_request url
       response = self.class.get(url)
-      if response.respond_to?(:code) && !(200..300).include?(reponse.code)
-        raise NotFound.new("404 Not Found") if reponse.not_found?
-        rails InvalidAPIResponse.new(url, response)
+      if response.respond_to?(:code) && !(200..300).include?(response.code)
+        raise NotFound.new("404 Not Found") if response.not_found?
+        raise InvalidAPIResponse.new(url, response)
       end
 
       response
