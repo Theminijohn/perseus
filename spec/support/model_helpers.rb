@@ -47,3 +47,58 @@ shared_examples 'plain attribute' do
   end
 
 end
+
+shared_examples 'time attribute' do
+  let(:subject_class) { subject.class }
+  let(:setter) { "#{attribute}=" }
+
+  it_behaves_like 'plain attribute' do
+    let(:attribute_value) { Time.now }
+  end
+
+  it "does not parse the value is it isn't a Numeric value" do
+    model = subject_class.new(attribute => Date.today)
+    expect(model.send attribute).to be_a Date
+  end
+
+  it "works with LoL format (13 digits)" do
+    model = subject_class.new(attribute => 1386804971247)
+    expect(model.send(attribute).year).to eq 2013
+  end
+end
+
+shared_examples 'collection attribute' do
+  let(:subject_class) { subject.class }
+  let(:setter) { "#{attribute}=" }
+
+  it_behaves_like 'attribute'
+
+  it 'is sets if the hash contains the attribute name "underscored"' do
+    value = respond_to?(:attribute_value) && attribute_value || [{}, {}]
+    model = subject_class.new({ attribute => value })
+    expect(model.send(attribute).size).to eq 2
+  end
+
+  it 'is set if the hash contains the attribute name "camelized"' do
+    value = respond_to?(:attribute_value) && attribute_value || [{}, {}]
+    model = subject_class.new({ camelize(attribute) => value })
+    expect(model.send(attribute).size).to eq 2
+  end
+
+  context 'if the value is enumerable' do
+    context 'and contains items as Hash' do
+      it 'parses the item' do
+        value = respond_to?(:attribute_value) && attribute_value || [{}, {}]
+        model = subject_class.new attribute => value
+        expect(model.send(attribute).map(&:class).uniq).to eq [attribute_class]
+      end
+    end
+
+    context 'and contains items as non-Hash' do
+      it 'does not parse the item' do
+        model = subject_class.new attribute => [attribute_class.new, Object.new]
+        expect(model.send(attribute).map(&:class).uniq).to eq [attribute_class, Object]
+      end
+    end
+  end
+end
