@@ -15,7 +15,7 @@ module Perseus
         raise ArgumentError, 'Only :season is allowed as an extra parameter'
       end
       stats_api_path = "stats/by-summoner/#{summoner_id}/summary"
-      perform_request(api_url(stats_api_path))['playerStatSummaries'].map do |player_stat_data|
+      perform_request(api_url(stats_api_path, extra))['playerStatSummaries'].map do |player_stat_data|
         PlayerStatistic.new player_stat_data
       end
     end
