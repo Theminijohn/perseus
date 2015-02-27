@@ -19,6 +19,11 @@ module Perseus
       @stats_request ||= StatsRequest.new(api_key, region)
     end
 
+    # @return [MatchRequest]
+    def match
+      @match_request ||= MatchRequest.new(api_key, region)
+    end
+
     # Initializes a Perseus::Client
     # def initialize api_key, options = {}
     #   @api_key = api_key
