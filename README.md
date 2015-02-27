@@ -1,4 +1,8 @@
-# Perseus (Son of Zeus)
+<h1 align="center">Perseus (Son of Zeus)</h1>
+<p align="center">
+  <img src='http://fc06.deviantart.net/fs11/i/2006/209/5/4/Vatican_Statues_3____Perseus_by_ProxyDave.png' />
+</p>
+
 
 > In Greek mythology, Perseus (/ˈpɜrsiəs, -sjuːs/; Greek: Περσεύς), the legendary founder of Mycenae and of the Perseid dynasty of Danaans, was the first hero. His exploits in defeating various archaic monsters provided the founding myths of the Twelve Olympians. Perseus beheaded the Gorgon Medusa and saved Andromeda from the sea monster Cetus. Perseus was the son of the mortal Danaë and the god Zeus.
 
