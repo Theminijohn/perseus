@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Perseus::VERSION
   spec.authors       = ["The Mini John"]
   spec.email         = ["the@minijohn.me"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Testing}
+  spec.description   = %q{Testing}
   spec.homepage      = "http://www.leagueio.com"
   spec.license       = "MIT"
 
@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.6"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "awesome_print"
 
   spec.add_runtime_dependency "httparty"
   spec.add_runtime_dependency "activesupport"
