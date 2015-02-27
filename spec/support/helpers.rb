@@ -8,6 +8,11 @@ module Helpers
     s[0] + s.to_s.split("_").each {|s| s.capitalize! }.join("")[1..-1]
   end
 
+  def load_fixture(subject, version, method='get')
+    fixture_file = File.join(SPEC_ROOT, 'fixtures', "#{version}", "#{method}-#{subject}.json")
+    JSON.parse(File.read(fixture_file, :encoding => "utf-8"))
+  end
+
   def expect_init_attribute(subject, attribute)
     expect(subject.new(camelize(attribute) => "foo").send(attribute)).to eq("foo")
   end
@@ -31,6 +36,14 @@ module Helpers
       'na'  => '20964624',
       'eune' => '27683954'
     }
+  end
+
+  def stub_request(request_object, fixture_name, url, params={})
+    request_class = request_object.class
+    full_url = request_object.api_url(url, params)
+    fixture_json = load_fixture(fixture_name, request_class.api_version, :get)
+
+    expect(request_class).to receive(:get).with(full_url).and_return(fixture_json)
   end
 
 end
