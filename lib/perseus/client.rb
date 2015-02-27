@@ -19,7 +19,6 @@ module Perseus
       @api_key = api_key
       @region = options.delete(:region)
     end
-    
 
   end
 end 
