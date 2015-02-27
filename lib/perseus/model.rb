@@ -14,7 +14,7 @@ module Perseus
       end
     end
 
-    # Re-written Object#Inspecct to skip the @raw instance variable
+    # Re-written Object#Inspect to skip the @raw instance variable
     # @return [String] representation of object
     def inspect
       vars = self.instance_variables.

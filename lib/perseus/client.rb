@@ -14,6 +14,11 @@ module Perseus
       @summoner_request ||= SummonerRequest.new(api_key, region)
     end
 
+    # @return [StatsRequest]
+    def stats
+      @stats_request ||= StatsRequest.new(api_key, region)
+    end
+
     # Initializes a Perseus::Client
     # def initialize api_key, options = {}
     #   @api_key = api_key
