@@ -25,16 +25,16 @@ module Perseus
     end
 
     # Initializes a Perseus::Client
-    # def initialize api_key, options = {}
-    #   @api_key = api_key
-    #   @region = options.delete(:region)
-    # end
+    def initialize api_key, options = {}
+      @api_key = api_key
+      @region = options.delete(:region)
+    end
    
     # For Development 
-    def initialize
-      @api_key = ENV['LOL_API_KEY']
-      @region = 'eune'
-    end
+    # def initialize
+    #   @api_key = ENV['LOL_API_KEY']
+    #   @region = 'eune'
+    # end
 
   end
 end 
