@@ -19,6 +19,11 @@ module Perseus
       @stats_request ||= StatsRequest.new(api_key, region)
     end
 
+    # @return [StaticRequest]
+    def static
+      @static_request || StaticRequest.new(api_key, region)
+    end
+
     # @return [MatchRequest]
     def match
       @match_request ||= MatchRequest.new(api_key, region)
