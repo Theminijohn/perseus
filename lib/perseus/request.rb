@@ -2,7 +2,7 @@ require 'uri'
 require 'active_support/core_ext/object/to_query'
 
 module Perseus
-  # class NotFound < StandardError; end
+  class NotFound < StandardError; end
 
   # Encapsulates common methods for all requests
   # Request classes inherit from this
