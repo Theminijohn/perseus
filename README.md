@@ -39,12 +39,32 @@ Will have to add custom logic on how to handle Rate Limit Hits. Have in mind, th
 ### Available Requests
 
 ```ruby
+# => Perseus::Summoner
 client.summoner
-# => Perseus::SummonerRequest
+-- client.summoner.by_name(name) # Perseus::Summoner
+-- client.summoner.get(summoner_id) # Perseus::Summoner
+-- client.summoner.masteries(summoner_id) # [Perseus::Masterypage]
+-- client.summoner.runes(summoner_id) # [Perseus::Runepage]
 
-client.stats
+# => Perseus::TeamRequest
+client.team
+-- client.team.get(summoner_id) # Array
+
+# => Perseus::ChampionRequest
+client.champion
+-- client.champion.get # Perseus::Champion
+
 # => Perseus::StatsRequest
+client.stats
+-- client.stats.ranked(summoner_id) # Perseus::RankedStats
+-- client.stats.summary(summoner_id) # Perseus::SummaryStats
 
-client.match
-# => Perseus::MatchRequest
+# => Perseus::StaticRequest
+client.static
+-- client.static.champion # Perseus::StaticRequest (for endpoint /static-data/champion)
+-- client.static.champion.get # [OpenStruct]
+-- client.static.champion.get(id) # OpenStruct 
+-- client.static.champion.get(champData: 'all') # You can also pass query parameters
 ```
+
+**NOTE:** The realm endpoint is not implemented.
