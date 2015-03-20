@@ -68,7 +68,7 @@ describe Client do
     end
   end
 
-  xdescribe '#team' do
+  describe '#team' do
     it 'returns an instance of TeamRequest' do
       expect(subject.team).to be_a(TeamRequest)
     end

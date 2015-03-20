@@ -39,6 +39,11 @@ module Perseus
       @champion_request ||= ChampionRequest.new(api_key, region)
     end
 
+    # @return [TeamRequest]
+    def team
+      @team_request ||= TeamRequest.new(api_key, region)
+    end
+
     # Initializes a Perseus::Client
     def initialize api_key, options = {}
       @api_key = api_key
